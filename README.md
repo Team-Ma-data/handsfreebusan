@@ -1,40 +1,210 @@
-# HandsFreeBusan
+<div align="center">
+  
+# 🧳 HandsFree Busan
 
-AI travel assistant for foreign visitors using the Busan metro — luggage storage,
-directions, and payment help, delivered through a chat interface.
+**외국인 여행자의 짐과 이동을 대신 판단해 주는 AI 어시스턴트**<br />
+*An AI decision assistant that handles luggage & mobility for foreign visitors to Busan.*
 
-## Structure
+`DIVE 2026 데이터 해커톤 본선` · `부산교통공사 × 짐캐리`<br />
+**Team 마데이터** — 최은영 · 고다경 · 배서은 · 황유리
+
+</div>
+
+---
+
+## 👥 팀원 소개 및 역할
+
+| 최은영 | 고다경 | 황유리 | 배서은 |
+| :---: | :---: | :---: | :---: |
+| **팀장, AI** | **프론트엔드, 발표** | **데이터 분석, 백엔드** | **데이터 분석, 발표자료** |
+
+---
+
+## 📌 프로젝트 소개
+
+부산을 찾은 외국인 관광객은 여행보다 **먼저 '이동'이라는 장벽**을 마주합니다. 복잡한 역사 구조,
+캐리어를 든 채의 환승, 어디에 짐을 맡길 수 있는지 알 수 없는 정보 부족 — 이 모든 불편이 도착
+순간부터 관광 경험 전체에 영향을 줍니다.
+
+**HandsFree Busan**은 단순 정보 검색을 넘어, 사용자의 **현재 상황(위치·목적지·짐 구성·이동 목적)을
+이해하고 가장 적합한 이동/보관 방법을 스스로 판단**해 제안하는 대화형 AI 어시스턴트입니다.
+특히 여행 **중간에 쇼핑으로 발생하는 짐**(Mid-trip Luggage)까지 다뤄, 기존 "여행 시작·끝의 짐 배송"
+서비스가 놓친 구간을 채웁니다.
+
+---
+
+## 🎯 문제 정의
+
+| 이동의 장벽 | 내용 |
+| --- | --- |
+| 역사 내 이동·환승 | 복잡한 역사 구조, 출구·환승 동선 파악 어려움 |
+| 대형 수하물 이동 | 캐리어로 인한 이동 제약, 관광 동선 변경 및 피로 증가 |
+| 이동편의시설 정보 부족 | 엘리베이터·에스컬레이터, 물품보관함 위치, 역사 내 시설 정보 부족 |
+
+> 해외 관광객이 주로 쓰는 지도 앱은 **역 내부 동선·출구 정보·물품보관함·ATM·엘리베이터 같은
+> 국내 생활형 정보**를 제공하지 못합니다. 이동 문제 해결은 부산이 추진 중인
+> **핸즈프리 쇼핑 도시 · 로컬관광 정책**을 뒷받침하는 핵심 인프라이기도 합니다.
+
+---
+
+## 💡 해결 방안 — "판단하는" 어시스턴트
+
+사용자가 상황을 말하면(예: *"서면에서 쇼핑하고 싶은데 캐리어가 있어요"*), AI가 여러 데이터를
+종합해 **실행 가능한 하나의 답**을 제시합니다.
 
 ```
-handsfreebusan-repo/
-├─ android/   # Jetpack Compose app (chat UI + API client)
-└─ backend/   # FastAPI service (Solar LLM tool-calling + recommendation engine)
+① 사용자 입력            ② AI 종합 판단                 ③ 맞춤형 결과 제공
+현재 위치 / 목적지    →   출구·환승, 엘베·에스컬레이터,  →  "3번 출구 → 엘리베이터 →
+캐리어 유무 / 이동목적     보관함 가능 여부, 짐배송           OO역 보관함 이용,
+                          가능 여부, 편의시설, 상권           또는 짐 배송 이용 가능"
 ```
 
-## Backend
+### 차별성 — 중간 짐(Mid-trip Luggage)의 해방
+기존 짐 서비스가 여행의 **시작과 끝**에서 발생하는 짐만 다뤘다면, HandsFree Busan은
+**쇼핑 등 여행 중간에 생기는 짐**까지 이동·보관·배송으로 함께 지원합니다.
 
+---
+
+## 📱 앱 시연 및 주요 화면
+<div align="center">
+
+| 메인 화면 | 채팅 화면 | 추천 카드 |
+| :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/91205698-9f0f-4762-a42c-2b82374b47b1" width="250" alt="메인화면" /> | <img src="https://github.com/user-attachments/assets/be2da2c4-c6c3-4a9d-aa25-8969b732b411" width="250" alt="채팅화면" /> | <img src="https://github.com/user-attachments/assets/e7ac152a-dfef-47df-a4c2-2fc595633785" width="250" alt="추천 카드" /> |
+
+</div>
+
+---
+
+## 📊 데이터 분석 (방법론)
+
+> ⚠️ **주최사(발제사) 제공 원자료는 라이선스 문제로 본 저장소에 포함하지 않습니다.**
+> 아래는 팀이 설계한 **분석 방법론과 결과의 개요**이며, 원본 데이터셋(역 마스터·승하차 원장·
+> 카드소비 상세 등)과 역별 상세 수치는 공개 대상에서 제외했습니다.
+
+**핵심 질문:** *쇼핑 짐이 가장 많이 발생하는 곳과, 짐을 맡길 수 있는 곳이 일치하는가?*
+
+- **공간 처리** — 환승역을 물리 단위로 통합해 승하차·보관함을 합산(상권 이중 계산 방지),
+  업소는 도보 접근권(약 300m)으로 가장 가까운 역 한 곳에 귀속, 상권 소비액을 역 단위로 배분.
+- **핵심 지표 (Mismatch Score)** — 역별 *쇼핑 짐 수요* 대비 *대형 이상 보관함 공급*의 불일치를
+  0–100으로 정규화. 값이 클수록 보관함 1칸이 감당해야 할 수요가 큼.
+- **결과 인사이트 (요약)**
+  1. **공급이 수요를 못 따라간다** — 수요 상위 역의 대형 보관함 1칸이 감당해야 할 쇼핑 짐이 과중.
+  2. **있다고 쓸 수 있는 게 아니다** — 전체 보관함 중 캐리어가 들어가는 대형 이상은 절반 미만.
+  3. **아예 선택지가 없는 역** — 상당수 역에는 물품보관함 자체가 없어 대안 탐색이 필요.
+
+이 분석은 "어디에 보관 인프라를 늘려야 하는가"와 "지금 사용자에게 어떤 대안을 줘야 하는가"를
+동시에 뒷받침합니다.
+
+---
+
+## 🤖 추천 엔진 — 실현 가능성까지 판단
+
+단순히 가까운 보관함을 알려주는 게 아니라, **실제로 이용 가능한지**를 제약 조건으로 검증합니다.
+
+**제약(실패) 조건**
+- **구간 제약** — 배송은 매장·숙소·무인보관함을 끝점으로만 성립(임의 OD 불가), 권역 밖 숙소는 배송 옵션 미생성
+- **시간 제약** — 짐 배송 접수 마감 경과 / 역사 보관함 운영시간 초과 시 탈락
+- **용량 제약** — 목적지 역 보관함의 규격 칸이 0이거나, 인근에 보관함이 없으면 탈락
+
+**모두 탈락 시 — 폴백 사다리(Fallback Ladder)**
+1. **인근 역 보관함 재탐색** — 1~2정거장 이내 역 보관함을 이동시간 페널티 포함 비용으로 재비교
+2. **캐리어 동반 경로 전환** — 맡기기 실패 시 E/L 경로·시설 고장 회피·곡선 승강장 회피 경로 추천
+3. **시간 시프트(shift) 제안** — 마감 초과 시 "내일 오전 접수 → 숙소 도착" 같은 예약형 대안 스케줄 제시
+
+이 덕분에 `feasible=false` 카드도 **실패가 아니라 "왜 안 되는지 + 대안"을 보여주는 기능**으로 동작합니다.
+
+---
+
+## 🏗 시스템 구성
+
+```
+handsfreebusan/
+├─ android/   # Jetpack Compose 앱 — 챗봇 UI + API 클라이언트
+└─ backend/   # FastAPI — Solar LLM 툴콜링 + 추천 엔진
+   ├─ app/      # API·에이전트·툴(짐/현금)·프롬프트·스키마
+   ├─ engine/   # 실현 가능성 판정·경로·비용·피로도·폴백 로직
+   └─ data/     # 데모용 공개 샘플 데이터 (주최사 원자료 아님)
+```
+
+**동작 흐름**
+```
+사용자 발화 → Solar LLM(툴콜링) → 도구 실행(엔진 판정) → 사실 카드 생성
+                                                    ↘ LLM이 사실을 사용자 언어로 요약
+```
+> 카드(가격·시간·보관함 정보 등 **사실**)는 LLM을 거치지 않고 도구가 직접 생성해,
+> 환각이 사실에 섞이지 않도록 설계했습니다. LLM은 사실을 **사용자 언어로 설명**하는 역할만 합니다.
+
+---
+
+## ✨ 주요 기능
+
+- 💬 **상황 기반 대화** — 위치·목적지·짐·목적을 이해해 맞춤 이동/보관 제안
+- 🧳 **짐 전략 판단** — 역사 보관함 · 무인보관함 · 짐 배송을 비용/시간/피로도로 비교
+- 🗺 **경로·편의시설 안내** — 출구·환승, 엘리베이터·에스컬레이터, 편의시설
+- 💳 **현금/승차권 가이드** — ATM 대신 해외카드 결제 가능한 모바일 승차권 등 더 나은 대안 우선
+- 🌐 **다국어 대응** — 사용자가 쓴 언어를 감지해 그 언어로 응답 (EN/KO/JA/ZH)
+- 🧩 **팔로업 추천 칩** · **최근 대화** · **오프라인 폴백**(백엔드 미연결 시 기본 화면 유지)
+
+---
+
+## 🛠 기술 스택
+
+| 영역 | 기술 |
+| --- | --- |
+| App | Kotlin, Jetpack Compose, OkHttp, kotlinx.serialization |
+| Backend | Python, FastAPI, Uvicorn |
+| LLM | Upstage **Solar** (tool-calling) |
+| Engine | 자체 구현 — 실현 가능성 판정 · 경로/비용/피로도 · 폴백 사다리 |
+
+---
+
+## 🚀 실행 방법
+
+### Backend
 ```bash
 cd backend
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env        # then fill in UPSTAGE_API_KEY
+cp .env.example .env          # UPSTAGE_API_KEY 를 채워주세요
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
+- Swagger UI: `http://localhost:8000/docs` · 상태 확인: `GET /health`
 
-Swagger UI: http://localhost:8000/docs · health check: `GET /health`
+### Android
+1. Android Studio에서 `android/` 폴더 열기
+2. 에뮬레이터에서 실행
+3. 앱은 기본적으로 `http://10.0.2.2:8000`(에뮬레이터에서 본 호스트 localhost)로 백엔드에 연결
+   - 실기기/다른 호스트는 `android/app/src/main/java/com/HandsFreeBusan/app/data/api/ApiClient.kt`의 `baseUrl` 수정
 
-> **Secrets:** the real `.env` is never committed — copy `.env.example` and add your
-> own `UPSTAGE_API_KEY`.
->
-> **Data:** the organizer-provided dataset (`발제사 데이터/`) is intentionally **not**
-> included in this repository. Without it the engine runs in reduced/fallback mode; the
-> API contract is identical.
+---
 
-## Android
+## 📡 API 개요
 
-Open the `android/` folder in Android Studio and run on an emulator.
+| Method | Endpoint | 설명 |
+| --- | --- | --- |
+| GET | `/faq?lang=` | 홈 인사말 + 추천 질문 칩 (다국어) |
+| GET | `/sessions` | 최근 대화 목록 |
+| POST | `/chat` | 대화 한 턴 — `reply`(문장) + `cards`(사실) + `suggestions`(칩) |
+| DELETE | `/chat/{id}` | 대화 초기화 |
+| GET | `/health` | 서버/LLM/엔진 상태 |
 
-The app talks to the backend at `http://10.0.2.2:8000` (the host machine's `localhost`
-as seen from the Android emulator). Change `baseUrl` in
-`android/app/src/main/java/com/HandsFreeBusan/app/data/api/ApiClient.kt` for a physical
-device or a different host.
+`POST /chat` 응답의 **`cards`는 도구가 계산한 사실**(가격·시간·운영시간)이므로, 수치는 반드시
+카드에서 읽어 표시합니다. `reply`는 LLM이 사실을 사용자 언어로 옮긴 설명입니다.
+
+---
+
+## 🔐 데이터 및 라이선스
+
+- **주최사(발제사) 제공 데이터셋은 본 저장소에 포함하지 않았습니다.** 해당 원자료가 없으면
+  엔진은 **축소(fallback) 모드**로 동작하며, API 계약(응답 형태)은 동일합니다.
+- 실제 API 키 등 비밀 값은 저장소에 포함되지 않습니다. `backend/.env.example`을 복사해
+  본인 키로 `.env`를 구성하세요.
+
+---
+
+<div align="center">
+
+**DIVE 2026 · 부산교통공사 × 짐캐리 · Team 마데이터**
+
+</div>
