@@ -1,0 +1,95 @@
+{
+  "_warning": "★ 데모용 부분 집합이다. 본선에서는 발제 #1 station_master(114레코드) + #4-1 물품보관함 원본으로 통째로 교체할 것. 값이 확인되지 않은 항목은 null로 두었고(추정치를 채워넣지 않았다), 코드는 null을 '모름'으로 정직하게 처리한다.",
+  "_confirmed_from_docs": "서면/부산역/남포 일평균, 해운대·토성·범일·장산·서면 보관함 칸수, ATM 환승역 비대칭, 환전 키오스크 3역, ATM 공백 관광역 4곳",
+
+  "stations": [
+    {"name": "부산역", "name_en": "Busan Station", "lines": [1], "lat": 35.1151, "lng": 129.0413,
+     "locker_large_slots": 85, "has_atm": true, "atm_lines": [1], "exchange_kiosk": "planned", "daily_riders": 49000,
+     "tags": ["KTX", "관문역", "짐캐리 거점"]},
+
+    {"name": "서면", "name_en": "Seomyeon", "lines": [1, 2], "lat": 35.1578, "lng": 129.0594,
+     "locker_large_slots": 255, "has_atm": true, "atm_lines": [1], "atm_missing_lines": [2],
+     "exchange_kiosk": "confirmed", "daily_riders": 124000,
+     "tags": ["최대 수요", "쇼핑", "짐캐리 무인보관함 52칸"]},
+
+    {"name": "해운대", "name_en": "Haeundae", "lines": [2], "lat": 35.1631, "lng": 129.1635,
+     "locker_large_slots": 3, "has_atm": true, "atm_lines": [2], "exchange_kiosk": "confirmed", "daily_riders": null,
+     "tags": ["관광", "숙박 밀집", "대형칸 부족"]},
+
+    {"name": "센텀시티", "name_en": "Centum City", "lines": [2], "lat": 35.1693, "lng": 129.1305,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [2], "exchange_kiosk": "confirmed", "daily_riders": null,
+     "tags": ["쇼핑", "신세계"]},
+
+    {"name": "광안", "name_en": "Gwangan", "lines": [2], "lat": 35.1537, "lng": 129.1187,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [2], "exchange_kiosk": "planned", "daily_riders": null,
+     "tags": ["관광", "불꽃축제 스파이크 4.6배"]},
+
+    {"name": "금련산", "name_en": "Geumnyeonsan", "lines": [2], "lat": 35.1521, "lng": 129.1119,
+     "locker_large_slots": null, "has_atm": false, "exchange_kiosk": "none", "daily_riders": 7158,
+     "tags": ["ATM 공백", "광안리 서측 관문"]},
+
+    {"name": "남포", "name_en": "Nampo", "lines": [1], "lat": 35.0977, "lng": 129.0344,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [1], "exchange_kiosk": "planned", "daily_riders": 38000,
+     "tags": ["원도심", "국제시장", "현금 관행"]},
+
+    {"name": "자갈치", "name_en": "Jagalchi", "lines": [1], "lat": 35.0966, "lng": 129.0304,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [1], "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["전통시장", "현금 관행"]},
+
+    {"name": "토성", "name_en": "Toseong", "lines": [1], "lat": 35.0980, "lng": 129.0203,
+     "locker_large_slots": 7, "has_atm": true, "atm_lines": [1], "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["감천문화마을 관문", "외국인 방문률 1위", "보관 부족"]},
+
+    {"name": "범일", "name_en": "Beomil", "lines": [1], "lat": 35.1360, "lng": 129.0592,
+     "locker_large_slots": 8, "has_atm": true, "atm_lines": [1], "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["쇼핑 업소 847곳", "카드소비 1위", "배송 거점 1순위 제안"]},
+
+    {"name": "장산", "name_en": "Jangsan", "lines": [2], "lat": 35.1692, "lng": 129.1783,
+     "locker_large_slots": 12, "has_atm": true, "atm_lines": [2], "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["해운대권"]},
+
+    {"name": "벡스코", "name_en": "BEXCO", "lines": [2], "lat": 35.1690, "lng": 129.1345,
+     "locker_large_slots": null, "has_atm": false, "exchange_kiosk": "none", "daily_riders": 9471,
+     "tags": ["ATM 공백", "짐캐리 거점(토·일 휴무)"]},
+
+    {"name": "경성대·부경대", "name_en": "Kyungsung Univ.·Pukyong Univ.", "lines": [2], "lat": 35.1374, "lng": 129.1004,
+     "locker_large_slots": null, "has_atm": false, "exchange_kiosk": "none", "daily_riders": 15033,
+     "tags": ["ATM 공백", "관광"]},
+
+    {"name": "다대포해수욕장", "name_en": "Dadaepo Beach", "lines": [1], "lat": 35.0491, "lng": 128.9662,
+     "locker_large_slots": null, "has_atm": false, "exchange_kiosk": "none", "daily_riders": 4634,
+     "tags": ["ATM 공백", "관광"]},
+
+    {"name": "사상", "name_en": "Sasang", "lines": [2], "lat": 35.1626, "lng": 128.9857,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [2], "exchange_kiosk": "planned", "daily_riders": null,
+     "tags": ["서부터미널"]},
+
+    {"name": "동래", "name_en": "Dongnae", "lines": [1, 4], "lat": 35.2050, "lng": 129.0784,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [1], "atm_missing_lines": [4],
+     "exchange_kiosk": "none", "daily_riders": null, "tags": ["환승 비대칭"]},
+
+    {"name": "덕천", "name_en": "Deokcheon", "lines": [2, 3], "lat": 35.2098, "lng": 128.9908,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [2], "atm_missing_lines": [3],
+     "exchange_kiosk": "none", "daily_riders": null, "tags": ["환승 비대칭"]},
+
+    {"name": "수영", "name_en": "Suyeong", "lines": [2, 3], "lat": 35.1653, "lng": 129.1136,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [2], "atm_missing_lines": [3],
+     "exchange_kiosk": "none", "daily_riders": null, "tags": ["환승 비대칭"]},
+
+    {"name": "미남", "name_en": "Minam", "lines": [3, 4], "lat": 35.2033, "lng": 129.0703,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [3], "atm_missing_lines": [4],
+     "exchange_kiosk": "none", "daily_riders": null, "tags": ["환승 비대칭"]},
+
+    {"name": "사직", "name_en": "Sajik", "lines": [3], "lat": 35.1930, "lng": 129.0620,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [3], "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["야구 경기일 스파이크", "조건부 보관소"]},
+
+    {"name": "초량", "name_en": "Choryang", "lines": [1], "lat": 35.1179, "lng": 129.0448,
+     "locker_large_slots": null, "has_atm": true, "atm_lines": [1], "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["국제여객터미널 인근"]},
+
+    {"name": "공항", "name_en": "Gimhae Airport", "lines": ["부산김해경전철"], "lat": 35.1795, "lng": 128.9382,
+     "locker_large_slots": null, "has_atm": true, "exchange_kiosk": "none", "daily_riders": null,
+     "tags": ["관문역", "짐캐리 거점 2곳"]}
+  ]
+}

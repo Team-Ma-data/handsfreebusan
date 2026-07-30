@@ -1,0 +1,121 @@
+{
+  "_source": "짐캐리 공식 웹(zimcarry.net) 조사 2026-07-26 · 프로젝트 문서 '미스매치_랭킹_종합정리본_v4' §5 확정치",
+  "_warning": "요금·운영시간은 조사 시점 기준. 본선 전 재확인 필요.",
+
+  "hard_constraints": {
+    "pickup_cutoff_hhmm": "11:00",
+    "pickup_cutoff_note": "숙소·보관함에서의 발송(픽업) 접수 마감. 이 시각 이후에는 유인 매장 직접 접수만 가능.",
+    "arrival_time_guarantee": false,
+    "arrival_time_note": "배송 도착 시각 지정 불가. '체크인 전 도착'을 약속하지 말 것 — 보수적 추정으로만 안내.",
+    "multi_item_discount_pct": 10,
+    "multi_item_discount_min_count": 2
+  },
+
+  "depots": [
+    {
+      "id": "busan_station",
+      "name_ko": "부산역점",
+      "name_en": "Busan Station",
+      "station": "부산역",
+      "detail_ko": "KTX 5번 출구 안쪽",
+      "open": "09:00", "close": "21:50",
+      "closed_weekdays": [],
+      "services": ["delivery", "storage"],
+      "lat": 35.1151, "lng": 129.0413
+    },
+    {
+      "id": "gimhae_domestic",
+      "name_ko": "김해공항 국내선점",
+      "name_en": "Gimhae Airport (Domestic)",
+      "station": "공항",
+      "detail_ko": "국내선 2층",
+      "open": "06:00", "close": "20:50",
+      "closed_weekdays": [],
+      "services": ["delivery", "storage", "packing"],
+      "lat": 35.1795, "lng": 128.9382
+    },
+    {
+      "id": "gimhae_intl",
+      "name_ko": "김해공항 국제선점",
+      "name_en": "Gimhae Airport (International)",
+      "station": "공항",
+      "detail_ko": "국제선 3층",
+      "open": "06:00", "close": "21:20",
+      "closed_weekdays": [],
+      "services": ["delivery", "storage", "packing"],
+      "lat": 35.1725, "lng": 128.9448
+    },
+    {
+      "id": "intl_ferry",
+      "name_ko": "부산항 국제여객터미널점",
+      "name_en": "Busan Port International Passenger Terminal",
+      "station": "초량",
+      "detail_ko": "2층",
+      "open": "10:00", "close": "18:50",
+      "closed_weekdays": [],
+      "services": ["delivery", "storage"],
+      "lat": 35.1179, "lng": 129.0521
+    },
+    {
+      "id": "bexco",
+      "name_ko": "BEXCO점",
+      "name_en": "BEXCO",
+      "station": "벡스코",
+      "detail_ko": "제1전시장 1층",
+      "open": "09:00", "close": "18:00",
+      "closed_weekdays": [5, 6],
+      "closed_note_ko": "토·일 휴무 — 주말 접수 불가",
+      "services": ["delivery", "storage"],
+      "lat": 35.1690, "lng": 129.1345
+    }
+  ],
+
+  "smart_lockers": [
+    {
+      "id": "seacloud",
+      "name_ko": "씨클라우드호텔 1층 (해운대)",
+      "name_en": "Sea Cloud Hotel 1F (Haeundae)",
+      "station": "해운대",
+      "slots": 16,
+      "can_send": true,
+      "lat": 35.1585, "lng": 129.1600
+    },
+    {
+      "id": "lotte_duty_free",
+      "name_ko": "롯데면세점 8층 (서면)",
+      "name_en": "Lotte Duty Free 8F (Seomyeon)",
+      "station": "서면",
+      "slots": 25,
+      "can_send": true,
+      "lat": 35.1577, "lng": 129.0596
+    },
+    {
+      "id": "sangsang_madang",
+      "name_ko": "KT&G 상상마당 (서면)",
+      "name_en": "KT&G Sangsang Madang (Seomyeon)",
+      "station": "서면",
+      "slots": 27,
+      "can_send": true,
+      "lat": 35.1560, "lng": 129.0611
+    }
+  ],
+
+  "conditional_depots": [
+    {
+      "id": "sajik_stadium",
+      "name_ko": "사직구장 물품보관소",
+      "name_en": "Sajik Baseball Stadium Storage",
+      "station": "사직",
+      "condition": "롯데 홈경기일만 운영 (경기 2시간 전 ~ 종료 1시간 후)",
+      "same_day_only": true,
+      "lat": 35.1940, "lng": 129.0615
+    }
+  ],
+
+  "pricing": {
+    "_note": "짐캐리 무인보관함 기본 4시간 요금, 12시간마다 동액 추가",
+    "locker_4h_krw": {"S": 2000, "M": 3000, "L": 4000},
+    "delivery_size_cm": {"S": 55, "M": 70, "L": 71},
+    "manned_storage_max_days": 7
+  }
+}

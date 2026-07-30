@@ -1,0 +1,14 @@
+# 챗봇
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+python-dotenv==1.0.1
+openai==1.59.6
+
+# 추천 엔진 (발제사 CSV/XLSX 로더)
+pandas==2.2.3
+openpyxl==3.1.5
+
+# 개발
+pytest==8.3.4
+httpx==0.28.1
